@@ -69,10 +69,14 @@ public class CopySheetAsyncEvent
         MatchEvaluator evaluator = Utils.AddOneToMatch;
 
         var sheetOnlyNum = regex.Replace(sheetToCopy.SheetNumber, evaluator);
-        while (_sheetsNumber.Contains(sheetOnlyNum) && Regex.IsMatch(sheetOnlyNum, @"^[a-zA-Z]+$"))
+        if (!Regex.IsMatch(sheetOnlyNum, @"^[a-zA-Z]+$"))
         {
-            sheetOnlyNum = regex.Replace(sheetOnlyNum, evaluator);
+            while (_sheetsNumber.Contains(sheetOnlyNum))
+            {
+                sheetOnlyNum = regex.Replace(sheetOnlyNum, evaluator);
+            }
         }
+        
 
         copiedSheet.SheetNumber = sheetOnlyNum;
         copiedSheet.Name = sheetToCopy.Name;
