@@ -1,0 +1,103 @@
+﻿<Page
+    x:Class="SheetWork.Views.Pages.SheetTablePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ax="http://axiom.com/xaml"
+    xmlns:pages="clr-namespace:SheetWork.Views.Pages"
+    xmlns:validators="clr-namespace:SheetWork.Views.ValidationRules"
+    Title="SheetTablePage"
+    d:DataContext="{d:DesignInstance pages:SheetTablePage,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    ax:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ax:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d"
+    >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ax:ThemesDictionary Theme="Light"/>
+                <ax:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="32">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <ax:DataGrid Grid.Column="0"
+                    ItemsSource="{Binding ViewModel.ProjectSheets, UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    IsReadOnly="True">
+
+            <ax:DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="ReadOnlyTextBrush" Color="#B3DCDCDC"/>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{StaticResource ReadOnlyTextBrush}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ax:DataGrid.RowStyle>
+            <ax:DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy" 
+                              Command="{Binding ViewModel.CopySelectedSheetCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
+                              />
+                    <MenuItem Header="Rename" 
+                              Command="{Binding ViewModel.RenameSelectedSheetCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
+                    />
+                    <MenuItem Header="Delete" Command="{Binding ViewModel.DeleteSelectedSheetCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
+                    />
+                </ContextMenu>
+            </ax:DataGrid.ContextMenu>
+        </ax:DataGrid>
+        <Grid Grid.Column="1"
+              Grid.Row="0" Margin="10,0,0,0">
+            <StackPanel >
+                <Label Content="Sheet Properties" FontSize="18" HorizontalAlignment="Center"></Label>
+                <Label Content="Rename" FontSize="16" HorizontalAlignment="Center"></Label>
+                <Label Content="Suffix" FontSize="14" HorizontalAlignment="Left" Margin="5,0,0,0"></Label>
+                <ax:TextBox Text="{Binding ViewModel.Suffix, UpdateSourceTrigger=PropertyChanged}"></ax:TextBox>
+                <Label Content="Prefix" FontSize="14" HorizontalAlignment="Left" Margin="5,10,0,0"></Label>
+                <ax:TextBox Text="{Binding ViewModel.Prefix, UpdateSourceTrigger=PropertyChanged}"></ax:TextBox>
+                <Label Content="Sheet Number" FontSize="14" HorizontalAlignment="Left" Margin="5,10,0,0"></Label>
+                <ax:TextBox>
+                    <ax:TextBox.Text>
+                        <Binding Path="ViewModel.Number" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validators:IsSheetNumberExist/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ax:TextBox.Text>
+                </ax:TextBox>
+            </StackPanel>
+
+            <ax:Button VerticalAlignment="Bottom" 
+                       HorizontalAlignment="Center"
+                       Content="Export To Excel"
+                       Command="{Binding ViewModel.ExportToExcelCommand}" >
+
+            </ax:Button>
+        </Grid>
+       
+        
+    </Grid>
+</Page>

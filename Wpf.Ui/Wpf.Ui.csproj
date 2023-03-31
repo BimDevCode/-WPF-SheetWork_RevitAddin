@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <UseWPF>true</UseWPF>
+        <Version>1.0.0</Version>
+        <LangVersion>latest</LangVersion>
+        <PlatformTarget>x64</PlatformTarget>
+        <ImplicitUsings>true</ImplicitUsings>
+        <TargetFramework>net48</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>CS0618;CS0625;CS8602;CS8604;CS0168;CS8625;CS8632</NoWarn>
+        <Configurations>Debug;Release</Configurations>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(Configuration.Contains('Release'))">
+        <Optimize>true</Optimize>
+        <DebugType>none</DebugType>
+        <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup>
+        <RootNamespace>Wpf.Ui</RootNamespace>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Resource Include="Fonts\FiraCode-Regular.ttf" />
+        <Resource Include="Fonts\FluentSystemIcons-Filled.ttf" />
+        <Resource Include="Fonts\FluentSystemIcons-Regular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+        <PackageReference Include="PolySharp" Version="1.12.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Controls\Anchor.bmp" />
+        <EmbeddedResource Include="Controls\Arc.bmp" />
+        <EmbeddedResource Include="Controls\AutoSuggestBoxControl\AutoSuggestBox.bmp" />
+        <EmbeddedResource Include="Controls\Badge.bmp" />
+        <EmbeddedResource Include="Controls\CardExpander.bmp" />
+        <EmbeddedResource Include="Controls\CardAction.bmp" />
+        <EmbeddedResource Include="Controls\Card.bmp" />
+        <EmbeddedResource Include="Controls\CodeBlock.bmp" />
+        <EmbeddedResource Include="Controls\DynamicScrollBar.bmp" />
+        <EmbeddedResource Include="Controls\DynamicScrollViewer.bmp" />
+        <EmbeddedResource Include="Controls\MessageBoxControl\MessageBox.bmp" />
+        <EmbeddedResource Include="Controls\FontIcon.bmp" />
+        <EmbeddedResource Include="Controls\Navigation\NavigationView.bmp" />
+        <EmbeddedResource Include="Controls\Navigation\NavigationViewItem.bmp" />
+        <EmbeddedResource Include="Controls\NotifyIcon.bmp" />
+        <EmbeddedResource Include="Controls\NumberBoxControl\NumberBox.bmp" />
+        <EmbeddedResource Include="Controls\ProgressRing.bmp" />
+        <EmbeddedResource Include="Controls\RatingControl.bmp" />
+        <EmbeddedResource Include="Controls\Snackbar.bmp" />
+        <EmbeddedResource Include="Controls\SymbolIcon.bmp" />
+        <EmbeddedResource Include="Controls\ThumbRateControl\ThumbRate.bmp" />
+        <EmbeddedResource Include="Controls\ToggleSwitch.bmp" />
+        <EmbeddedResource Include="Controls\Window\FluentWindow.bmp" />
+        <EmbeddedResource Include="Controls\VirtualizingControls\VirtualizingItemsControl.bmp" />
+        <EmbeddedResource Include="Controls\VirtualizingControls\VirtualizingWrapPanel.bmp" />
+    </ItemGroup>
+</Project>
