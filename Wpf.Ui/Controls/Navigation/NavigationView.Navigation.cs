@@ -98,8 +98,6 @@ public partial class NavigationView
     /// <inheritdoc />
     public virtual bool GoForward()
     {
-        throw new NotImplementedException();
-
         if (Journal.Count <= 1)
             return false;
 

@@ -76,7 +76,6 @@ public class CopySheetAsyncEvent
                 sheetOnlyNum = regex.Replace(sheetOnlyNum, evaluator);
             }
         }
-        
 
         copiedSheet.SheetNumber = sheetOnlyNum;
         copiedSheet.Name = sheetToCopy.Name;

@@ -87,6 +87,16 @@
                             </Binding.ValidationRules>
                         </Binding>
                     </ax:TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <DockPanel>
+                                <Border BorderBrush="Red" BorderThickness="1">
+                                    <AdornedElementPlaceholder x:Name="controlWithError"/>
+                                </Border>
+                                <TextBlock Foreground="Red" FontSize="20" FontFamily="Segoe UI" Margin="3,0,0,0" >!</TextBlock>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
                 </ax:TextBox>
             </StackPanel>
 
