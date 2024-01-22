@@ -1,0 +1,64 @@
+﻿<ax:FluentWindow
+    x:Class="SheetWork.Views.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SheetWork.Views.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:windows="clr-namespace:SheetWork.Views.Windows"
+    xmlns:ax="http://axiom.com/xaml"
+    xmlns:pages="clr-namespace:SheetWork.Views.Pages"
+    Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
+    d:DataContext="{d:DesignInstance local:MainWindow,
+                                     IsDesignTimeCreatable=True}"
+    Width="1100"
+    Height="650"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowCornerPreference="Round"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <ax:FluentWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Wpf.Ui;component/Styles/Wpf.Ui.xaml" />
+                <ax:ThemesDictionary Theme="Light"/>
+                <ax:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ax:FluentWindow.Resources>
+    <Grid>
+        <ax:TitleBar
+            x:Name="TitleBar"
+            Title="Axiom"
+            Margin="42,0,0,0" />
+        <ax:NavigationView
+            x:Name="RootNavigation"
+            IsBackButtonVisible="Collapsed"
+            PaneDisplayMode="Left"
+            OpenPaneLength="159"
+            TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}" Grid.ColumnSpan="2">
+            <ax:NavigationView.MenuItems>
+                <ax:NavigationViewItem
+                    Content="Export"
+                    TargetPageType="{x:Type pages:SheetTablePage}">
+                    <ax:NavigationViewItem.Icon>
+                        <ax:SymbolIcon
+                            Symbol="AppGeneric24" />
+                    </ax:NavigationViewItem.Icon>
+                </ax:NavigationViewItem>
+            </ax:NavigationView.MenuItems>
+            <ax:NavigationView.ContentOverlay>
+                <Grid>
+                    <ax:Snackbar
+                        x:Name="RootSnackbar" />
+                </Grid>
+            </ax:NavigationView.ContentOverlay>
+        </ax:NavigationView>
+     
+        <ContentPresenter
+            x:Name="RootContentDialog" />
+    </Grid>
+</ax:FluentWindow>

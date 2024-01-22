@@ -1,0 +1,10 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>SheetWork</Name>
+        <Assembly>SheetWork/SheetWork.dll</Assembly>
+        <AddInId>28F4FF08-D665-4B93-9374-8FE7F214C7E8</AddInId>
+        <FullClassName>SheetWork.AxiomApplication</FullClassName>
+        <VendorId>CompanyName</VendorId>
+        <VendorDescription>Description</VendorDescription>
+    </AddIn>
+</RevitAddIns>
