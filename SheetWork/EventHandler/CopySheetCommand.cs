@@ -56,7 +56,7 @@ public class CopySheetAsyncEvent
     {
         var sheetToCopyId = new ElementId(SheetModel.ElementId);
         using var transaction = new Transaction(RevitApi.CurrentDocument);
-        transaction.Start("Axiom Sheet Copy");
+        transaction.Start("Sheet Sheet Copy");
 
         if (RevitApi.CurrentDocument.GetElement(sheetToCopyId) is not ViewSheet sheetToCopy)
             throw new Exception("Can not find sheet in document");
