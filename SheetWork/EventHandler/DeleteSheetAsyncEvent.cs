@@ -31,7 +31,7 @@ public class DeleteSheetAsyncEvent
     {
         var sheetToDeleteId = new ElementId(SheetModel.ElementId);
         using var transaction = new Transaction(RevitApi.CurrentDocument);
-        transaction.Start("Axiom Sheet Delete");
+        transaction.Start("Sheet Sheet Delete");
 
         RevitApi.CurrentDocument.Delete(sheetToDeleteId);
 

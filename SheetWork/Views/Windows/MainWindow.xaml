@@ -1,4 +1,4 @@
-﻿<ax:FluentWindow
+﻿<sh:FluentWindow
     x:Class="SheetWork.Views.Windows.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:SheetWork.Views.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:windows="clr-namespace:SheetWork.Views.Windows"
-    xmlns:ax="http://axiom.com/xaml"
+    xmlns:sh="http://sheet.com/xaml"
     xmlns:pages="clr-namespace:SheetWork.Views.Pages"
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
     d:DataContext="{d:DesignInstance local:MainWindow,
@@ -20,45 +20,45 @@
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <ax:FluentWindow.Resources>
+    <sh:FluentWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Wpf.Ui;component/Styles/Wpf.Ui.xaml" />
-                <ax:ThemesDictionary Theme="Light"/>
-                <ax:ControlsDictionary />
+                <sh:ThemesDictionary Theme="Light"/>
+                <sh:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </ax:FluentWindow.Resources>
+    </sh:FluentWindow.Resources>
     <Grid>
-        <ax:TitleBar
+        <sh:TitleBar
             x:Name="TitleBar"
-            Title="Axiom"
+            Title="Sheet"
             Margin="42,0,0,0" />
-        <ax:NavigationView
+        <sh:NavigationView
             x:Name="RootNavigation"
             IsBackButtonVisible="Collapsed"
             PaneDisplayMode="Left"
             OpenPaneLength="159"
             TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}" Grid.ColumnSpan="2">
-            <ax:NavigationView.MenuItems>
-                <ax:NavigationViewItem
+            <sh:NavigationView.MenuItems>
+                <sh:NavigationViewItem
                     Content="Export"
                     TargetPageType="{x:Type pages:SheetTablePage}">
-                    <ax:NavigationViewItem.Icon>
-                        <ax:SymbolIcon
+                    <sh:NavigationViewItem.Icon>
+                        <sh:SymbolIcon
                             Symbol="AppGeneric24" />
-                    </ax:NavigationViewItem.Icon>
-                </ax:NavigationViewItem>
-            </ax:NavigationView.MenuItems>
-            <ax:NavigationView.ContentOverlay>
+                    </sh:NavigationViewItem.Icon>
+                </sh:NavigationViewItem>
+            </sh:NavigationView.MenuItems>
+            <sh:NavigationView.ContentOverlay>
                 <Grid>
-                    <ax:Snackbar
+                    <sh:Snackbar
                         x:Name="RootSnackbar" />
                 </Grid>
-            </ax:NavigationView.ContentOverlay>
-        </ax:NavigationView>
+            </sh:NavigationView.ContentOverlay>
+        </sh:NavigationView>
      
         <ContentPresenter
             x:Name="RootContentDialog" />
     </Grid>
-</ax:FluentWindow>
+</sh:FluentWindow>

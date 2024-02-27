@@ -145,7 +145,7 @@ public partial class SheetTableViewModel : ObservableObject
                 Prefix,
                 Suffix,
                 Number);
-
+            if(renamedSheet is null) return; // if number is empty
             var sheetIndex = ProjectSheets.IndexOf(selectedSheetModel);
             ProjectSheets?.RemoveAt(sheetIndex);
             ProjectSheets?.Insert(sheetIndex, renamedSheet);

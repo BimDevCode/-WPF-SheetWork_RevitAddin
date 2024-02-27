@@ -36,13 +36,13 @@ public class RenameSheetAsyncEvent
 
     private SheetModel Rename(UIApplication application)
     {
+        if (_number.IsNullOrEmpty()) return null;
         var sheetToRenameId = new ElementId(SheetModel.ElementId);
         using var transaction = new Transaction(RevitApi.CurrentDocument);
-        transaction.Start("Axiom Sheet Rename");
+        transaction.Start("Sheet Sheet Rename");
 
         if (RevitApi.CurrentDocument.GetElement(sheetToRenameId) is not ViewSheet sheetToRename)
             throw new Exception("Can not find this sheet in document");
-
         sheetToRename.SheetNumber = _number;
         _prefix = _prefix.Length == 0 ? " " : _prefix;
         _suffix = _suffix.Length == 0 ? " " : _suffix;

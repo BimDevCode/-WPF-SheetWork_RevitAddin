@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ax="http://axiom.com/xaml"
+    xmlns:sh="http://sheet.com/xaml"
     xmlns:pages="clr-namespace:SheetWork.Views.Pages"
     xmlns:validators="clr-namespace:SheetWork.Views.ValidationRules"
     Title="SheetTablePage"
@@ -12,16 +12,16 @@
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    ax:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
-    ax:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    sh:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    sh:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d"
     >
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ax:ThemesDictionary Theme="Light"/>
-                <ax:ControlsDictionary />
+                <sh:ThemesDictionary Theme="Light"/>
+                <sh:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -33,13 +33,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <ax:DataGrid Grid.Column="0"
+        <sh:DataGrid Grid.Column="0"
                     ItemsSource="{Binding ViewModel.ProjectSheets, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     IsReadOnly="True">
 
-            <ax:DataGrid.RowStyle>
+            <sh:DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Resources>
                         <SolidColorBrush x:Key="ReadOnlyTextBrush" Color="#B3DCDCDC"/>
@@ -52,8 +52,8 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-            </ax:DataGrid.RowStyle>
-            <ax:DataGrid.ContextMenu>
+            </sh:DataGrid.RowStyle>
+            <sh:DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Copy" 
                               Command="{Binding ViewModel.CopySelectedSheetCommand}"
@@ -67,26 +67,26 @@
                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}"
                     />
                 </ContextMenu>
-            </ax:DataGrid.ContextMenu>
-        </ax:DataGrid>
+            </sh:DataGrid.ContextMenu>
+        </sh:DataGrid>
         <Grid Grid.Column="1"
               Grid.Row="0" Margin="10,0,0,0">
             <StackPanel >
                 <Label Content="Sheet Properties" FontSize="18" HorizontalAlignment="Center"></Label>
                 <Label Content="Rename" FontSize="16" HorizontalAlignment="Center"></Label>
                 <Label Content="Suffix" FontSize="14" HorizontalAlignment="Left" Margin="5,0,0,0"></Label>
-                <ax:TextBox Text="{Binding ViewModel.Suffix, UpdateSourceTrigger=PropertyChanged}"></ax:TextBox>
+                <0sh:TextBox Text="{Binding ViewModel.Suffix, UpdateSourceTrigger=PropertyChanged}"></0sh:TextBox>
                 <Label Content="Prefix" FontSize="14" HorizontalAlignment="Left" Margin="5,10,0,0"></Label>
-                <ax:TextBox Text="{Binding ViewModel.Prefix, UpdateSourceTrigger=PropertyChanged}"></ax:TextBox>
+                <sh:TextBox Text="{Binding ViewModel.Prefix, UpdateSourceTrigger=PropertyChanged}"></sh:TextBox>
                 <Label Content="Sheet Number" FontSize="14" HorizontalAlignment="Left" Margin="5,10,0,0"></Label>
-                <ax:TextBox>
-                    <ax:TextBox.Text>
+                <sh:TextBox>
+                    <sh:TextBox.Text>
                         <Binding Path="ViewModel.Number" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <validators:IsSheetNumberExist/>
                             </Binding.ValidationRules>
                         </Binding>
-                    </ax:TextBox.Text>
+                    </sh:TextBox.Text>
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <DockPanel>
@@ -97,15 +97,15 @@
                             </DockPanel>
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
-                </ax:TextBox>
+                </sh:TextBox>
             </StackPanel>
 
-            <ax:Button VerticalAlignment="Bottom" 
+            <sh:Button VerticalAlignment="Bottom" 
                        HorizontalAlignment="Center"
                        Content="Export To Excel"
                        Command="{Binding ViewModel.ExportToExcelCommand}" >
 
-            </ax:Button>
+            </sh:Button>
         </Grid>
        
         
