@@ -10,7 +10,7 @@ namespace SheetWork;
 /// Add plugin to ribbon panel
 /// </summary>
 [UsedImplicitly]
-public class AxiomApplication : ExternalApplication
+public class ConbentApplication : ExternalApplication
 {
     public static PushButton PushButton;
     public override void OnStartup()
@@ -27,8 +27,8 @@ public class AxiomApplication : ExternalApplication
         var panel = Application.CreatePanel("Exporter", "SheetWork");
 
         var showButton = panel.AddPushButton<MainApplication>("Export Sheet");
-        showButton.SetImage("/SheetWork;component/Resources/Icons/AXIOM.png");
-        showButton.SetLargeImage("/SheetWork;component/Resources/Icons/AXIOM.png");
+        showButton.SetImage("/SheetWork;component/Resources/Icons/CONBENT.png");
+        showButton.SetLargeImage("/SheetWork;component/Resources/Icons/CONBENT.png");
         PushButton = showButton;
     }
 

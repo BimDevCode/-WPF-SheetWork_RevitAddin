@@ -30,7 +30,7 @@ public partial class MainWindow : INavigationWindow
         Wpf.Ui.Application.Current = this;
         var assembly = Assembly.GetExecutingAssembly();
         Application.ResourceAssembly = assembly;
-        AxiomApplication.PushButton.Enabled = false;
+        ConbentApplication.PushButton.Enabled = false;
         InitializeComponent();
 
         SetPageService(pageService);
@@ -69,7 +69,7 @@ public partial class MainWindow : INavigationWindow
     protected override void OnClosed(EventArgs e)
     {
         base.OnClosed(e);
-        AxiomApplication.PushButton.Enabled = true;
+        ConbentApplication.PushButton.Enabled = true;
 
         Wpf.Ui.Application.Current.Close();
     }
